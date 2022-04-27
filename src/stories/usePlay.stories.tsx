@@ -1,4 +1,4 @@
-import { usePlayer, usePlay, useNext, usePrevious } from "../hooks/usePlayer"
+import { usePlayer, play, useNext, usePrevious } from "../hooks/usePlayer"
 import { Story } from "@storybook/react"
 import { Authenticated } from "./authenticated"
 
@@ -12,7 +12,6 @@ export default {
 type StoryArgs = { token: string; name: string }
 export const Basic: Story<StoryArgs> = ({ name }, context) => {
   const [deviceID, , , , track] = usePlayer(context.token, name)
-  const play = usePlay(context.token, deviceID)
   const next = useNext(context.token, deviceID)
   const previous = usePrevious(context.token, deviceID)
   return (
@@ -29,9 +28,12 @@ export const Basic: Story<StoryArgs> = ({ name }, context) => {
       </div>
       <div>
         <button
-          onClick={() =>
-            play({ context_uri: "spotify:playlist:6cLmsZzpUopHj686U0GQcC" })
-          }
+          onClick={() => {
+            console.log(`onClick... deviceID: ${deviceID}`)
+            play(context.token, {
+              context_uri: "spotify:playlist:6cLmsZzpUopHj686U0GQcC",
+            })
+          }}
         >
           Play
         </button>

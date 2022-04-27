@@ -12,7 +12,7 @@ const Template: Story = () => {
   const options: SpotifyAuthOptions = {
     redirectURI: process.env.REACT_APP_SPOTIFY_REDIRECT_URL!,
     clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID!,
-    scopes: ["streaming"],
+    scopes: ["streaming", "user-modify-playback-state"],
   }
   const { token, getToken, logout, scopes } = useSpotifyAuth(options)
 

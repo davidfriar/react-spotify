@@ -29,7 +29,18 @@ declare module "./schema-orig" {
       /** Seeks to the given position in the user’s currently playing track. */
       put: operations["seek-to-position-in-currently-playing-track"]
     }
+    "/me/player/seek?&position_ms={position_ms}": {
+      /** Seeks to the given position in the user’s currently playing track. */
+      put: operations["seek-to-position-in-currently-playing-track"]
+    }
     "/me/player/repeat?device_id={device_id}&state={state}": {
+      /**
+       * Set the repeat mode for the user's playback. Options are repeat-track,
+       * repeat-context, and off.
+       */
+      put: operations["set-repeat-mode-on-users-playback"]
+    }
+    "/me/player/repeat?state={state}": {
       /**
        * Set the repeat mode for the user's playback. Options are repeat-track,
        * repeat-context, and off.
@@ -40,11 +51,23 @@ declare module "./schema-orig" {
       /** Set the volume for the user’s current playback device. */
       put: operations["set-volume-for-users-playback"]
     }
+    "/me/player/volume?volume_percent={volume_percent}": {
+      /** Set the volume for the user’s current playback device. */
+      put: operations["set-volume-for-users-playback"]
+    }
     "/me/player/shuffle?device_id={device_id}&state={state}": {
       /** Toggle shuffle on or off for user’s playback. */
       put: operations["toggle-shuffle-for-users-playback"]
     }
+    "/me/player/shuffle?state={state}": {
+      /** Toggle shuffle on or off for user’s playback. */
+      put: operations["toggle-shuffle-for-users-playback"]
+    }
     "/me/player/queue?device_id={device_id}&uri={uri}": {
+      /** Add an item to the end of the user's current playback queue. */
+      post: operations["add-to-queue"]
+    }
+    "/me/player/queue?uri={uri}": {
       /** Add an item to the end of the user's current playback queue. */
       post: operations["add-to-queue"]
     }

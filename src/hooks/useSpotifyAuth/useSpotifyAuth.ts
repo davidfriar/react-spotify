@@ -34,6 +34,7 @@ const authorize = async (
     params.append("scope", options.scopes.join(" "))
   }
   const url = authorizeURL + "?" + params.toString()
+  console.log(url)
   // window.location.href = url
   window.open(url)
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { getControls } from "./controls"
 
 export const usePlayer = (token: string, name: string) => {
   const [player, setPlayer] = useState<Spotify.Player | undefined>(undefined)
@@ -43,11 +44,12 @@ export const usePlayer = (token: string, name: string) => {
       setPlayer(thePlayer)
     }
   }, [name, token])
-  return [deviceID, player, paused, active, track] as [
-    string,
-    Spotify.Player,
-    boolean,
-    boolean,
-    Spotify.Track
-  ]
+  return {
+    player,
+    deviceID,
+    paused,
+    active,
+    track,
+    controls: getControls(token, deviceID),
+  }
 }

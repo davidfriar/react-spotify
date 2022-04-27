@@ -34,6 +34,28 @@ const configureFetcher = (token: string | undefined) => {
 
 export type Extractor<TReturnType, TResult> = (arg: TReturnType) => TResult
 
+export async function executeQuery<
+  TPath extends keyof paths,
+  TMethod extends keyof paths[TPath]
+>(
+  path: TPath,
+  method: TMethod,
+  token: string | undefined,
+  params: OpArgType<paths[TPath][TMethod]>
+) {
+  const fetcher = configureFetcher(token).path(path).method(method).create()
+  try {
+    const result = await fetcher(params)
+    return result.data
+  } catch (e) {
+    if (e instanceof fetcher.Error) {
+      const error = e.getActualType()
+      console.error(`Request for ${path} returned status: ${error.status}`)
+      console.error(error.data)
+    }
+  }
+}
+
 export function useQuery<
   TPath extends keyof paths,
   TMethod extends keyof paths[TPath],
@@ -50,24 +72,11 @@ export function useQuery<
   useEffect(() => {
     ;(async () => {
       if (token) {
-        const fetcher = configureFetcher(token)
-          .path(path)
-          .method(method)
-          .create()
-        try {
-          const result = await fetcher(params)
-          const data = result.data
+        const data = await executeQuery(path, method, token, params)
+        if (data) {
           const value = extractor ? extractor(data) : (data as TResult)
           if (setValue) {
             setValue(value)
-          }
-        } catch (e) {
-          if (e instanceof fetcher.Error) {
-            const error = e.getActualType()
-            console.error(
-              `Request for ${path} returned status: ${error.status}`
-            )
-            console.error(error.data)
           }
         }
       }

@@ -1,7 +1,6 @@
 import { usePlayer } from "../hooks/usePlayer"
 import { Story } from "@storybook/react"
 import { Authenticated } from "./authenticated"
-import { usePlay } from "../hooks/usePlayer/usePlay"
 
 export default {
   title: "usePlayer",
