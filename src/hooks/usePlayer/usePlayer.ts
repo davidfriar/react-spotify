@@ -6,7 +6,7 @@ export const usePlayer = (token: string, name: string) => {
   const [paused, setPaused] = useState(false)
   const [active, setActive] = useState(false)
   const [track, setTrack] = useState<Spotify.Track | undefined>(undefined)
-  const [deviceID, setDeviceID] = useState<string | undefined>(undefined)
+  const [deviceId, setDeviceId] = useState<string | undefined>(undefined)
 
   useEffect(() => {
     const script = document.createElement("script")
@@ -24,11 +24,11 @@ export const usePlayer = (token: string, name: string) => {
       })
       thePlayer.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id)
-        setDeviceID(device_id)
+        setDeviceId(device_id)
       })
       thePlayer.addListener("not_ready", ({ device_id }) => {
         console.log("Device has gone offline", device_id)
-        setDeviceID(undefined)
+        setDeviceId(undefined)
       })
       thePlayer.addListener("player_state_changed", (state) => {
         if (state) {
@@ -46,10 +46,10 @@ export const usePlayer = (token: string, name: string) => {
   }, [name, token])
   return {
     player,
-    deviceID,
+    deviceId,
     paused,
     active,
     track,
-    controls: getControls(token, deviceID),
+    controls: getControls(token, deviceId),
   }
 }

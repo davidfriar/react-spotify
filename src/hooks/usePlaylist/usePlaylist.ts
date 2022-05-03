@@ -1,28 +1,33 @@
 import { useQuery } from "../useQuery"
-import { components, paths } from "../../schema"
+import { paths } from "../../schema"
 import { useState } from "react"
 import { OpArgType } from "openapi-typescript-fetch"
+import { Playlist, Id, Token } from "../../types"
 
-export type Playlist = components["schemas"]["PlaylistObject"]
-export type PlaylistTrack = components["schemas"]["PlaylistTrackObject"]
-export type Track = components["schemas"]["TrackObject"]
+// type Path = paths["/playlists/{playlist_id}"]
+// type Method = "get"
+// type RequiredParams = "playlist_id"
+// type Params = OpArgType<Path[Method]>
+// type OptionalParams = Omit<Params, RequiredParams>
+// type ReturnType = OpReturnType<Path[Method]>
+// type TargetReturnType = Playlist
 
-export type Params = Omit<
+export type UsePlaylistParams = Omit<
   OpArgType<paths["/playlists/{playlist_id}"]["get"]>,
   "playlist_id"
 >
 
 export const usePlaylist = (
-  token: string | undefined,
-  playlist_id: string,
-  params?: Params
+  token: Token | undefined,
+  playlistId: Id,
+  params?: UsePlaylistParams
 ) => {
   const [playlist, setPlaylist] = useState<Playlist | undefined>(undefined)
   useQuery(
     "/playlists/{playlist_id}",
     "get",
     token,
-    { playlist_id, ...params },
+    { playlist_id: playlistId, ...params },
     setPlaylist
   )
 

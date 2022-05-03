@@ -1,4 +1,4 @@
-import { useTrack, Params } from "../hooks/useTrack"
+import { useTrack, UseTrackParams, Id, Token } from ".."
 import { Story } from "@storybook/react"
 import { Authenticated } from "./authenticated"
 
@@ -9,7 +9,7 @@ export default {
     controls: { hideNoControlsWarning: true },
   },
 }
-type StoryArgs = { token: string; id: string; params?: Params }
+type StoryArgs = { token: Token; id: Id; params?: UseTrackParams }
 export const Basic: Story<StoryArgs> = ({ id }, context) => {
   const track = useTrack(context.token, id)
   return (

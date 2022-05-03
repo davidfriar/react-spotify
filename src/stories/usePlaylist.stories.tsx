@@ -1,4 +1,11 @@
-import { usePlaylist, PlaylistTrack, Track, Params } from "../hooks/usePlaylist"
+import {
+  usePlaylist,
+  PlaylistTrack,
+  Track,
+  UsePlaylistParams,
+  Id,
+  Token,
+} from ".."
 import { Story } from "@storybook/react"
 import { Authenticated } from "./authenticated"
 
@@ -9,7 +16,7 @@ export default {
     controls: { hideNoControlsWarning: true },
   },
 }
-type StoryArgs = { token: string; playlistId: string; params?: Params }
+type StoryArgs = { token: Token; playlistId: Id; params?: UsePlaylistParams }
 export const Basic: Story<StoryArgs> = ({ playlistId }, context) => {
   const playlist = usePlaylist(context.token, playlistId)
   return (

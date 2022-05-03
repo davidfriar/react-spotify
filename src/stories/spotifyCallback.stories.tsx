@@ -1,4 +1,4 @@
-import { SpotifyCallback, SpotifyAuthOptions } from "../hooks/useSpotifyAuth"
+import { SpotifyCallback, SpotifyAuthOptions } from ".."
 import { Story } from "@storybook/react"
 
 export default {

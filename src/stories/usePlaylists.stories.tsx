@@ -1,4 +1,4 @@
-import { usePlaylists } from "../hooks/usePlaylists"
+import { usePlaylists, Token } from ".."
 import { Story } from "@storybook/react"
 import { Authenticated } from "./authenticated"
 
@@ -10,7 +10,7 @@ export default {
   },
 }
 
-export const Self: Story<{ token: string }> = (args, context) => {
+export const Self: Story<{ token: Token }> = (_args, context) => {
   const playlists = usePlaylists(context.token)
   return (
     <ul>
@@ -21,9 +21,9 @@ export const Self: Story<{ token: string }> = (args, context) => {
   )
 }
 
-export const Other: Story<{ token: string }> = (args, context) => {
-  const user_id = "21bgynixbjwzhp6diaiqkig2a"
-  const playlists = usePlaylists(context.token, user_id)
+export const Other: Story<{ token: string }> = (_args, context) => {
+  const userId = "21bgynixbjwzhp6diaiqkig2a"
+  const playlists = usePlaylists(context.token, userId)
   return (
     <ul>
       {playlists?.map((playlist) => (

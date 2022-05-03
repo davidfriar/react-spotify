@@ -1,4 +1,4 @@
-import { useAlbum, Params, Track } from "../hooks/useAlbum"
+import { useAlbum, UseAlbumParams, Track, Id, Token } from ".."
 import { Story } from "@storybook/react"
 import { Authenticated } from "./authenticated"
 
@@ -9,7 +9,7 @@ export default {
     controls: { hideNoControlsWarning: true },
   },
 }
-type StoryArgs = { token: string; id: string; params?: Params }
+type StoryArgs = { token: Token; id: Id; params?: UseAlbumParams }
 export const Basic: Story<StoryArgs> = ({ id }, context) => {
   const album = useAlbum(context.token, id)
   return (

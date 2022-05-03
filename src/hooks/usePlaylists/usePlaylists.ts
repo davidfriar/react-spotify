@@ -1,13 +1,11 @@
 import { useQuery } from "../useQuery"
-import { components } from "../../schema"
 import { useState } from "react"
+import { Playlists, Id, Token } from "../../types"
 
-export type Playlist = components["schemas"]["SimplifiedPlaylistObject"]
-
-export const usePlaylists = (token: string | undefined, user_id?: string) => {
-  const [playlists, setPlaylists] = useState<Playlist[] | undefined>(undefined)
-  const path = user_id ? "/users/{user_id}/playlists" : "/me/playlists"
-  const params: {} | { user_id: string } = user_id ? { user_id } : {}
+export const usePlaylists = (token: Token | undefined, userId?: string) => {
+  const [playlists, setPlaylists] = useState<Playlists | undefined>(undefined)
+  const path = userId ? "/users/{user_id}/playlists" : "/me/playlists"
+  const params: {} | { user_id: Id } = userId ? { user_id: userId } : {}
   useQuery(path, "get", token, params, setPlaylists, ({ items }) => items)
   return playlists
 }

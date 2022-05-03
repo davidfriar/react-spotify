@@ -1,4 +1,4 @@
-import { useSpotifyAuth, SpotifyAuthOptions } from "../hooks/useSpotifyAuth"
+import { useSpotifyAuth, SpotifyAuthOptions } from ".."
 import { Story } from "@storybook/react"
 
 export default {
@@ -12,7 +12,14 @@ const Template: Story = () => {
   const options: SpotifyAuthOptions = {
     redirectURI: process.env.REACT_APP_SPOTIFY_REDIRECT_URL!,
     clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID!,
-    scopes: ["streaming", "user-modify-playback-state"],
+    scopes: [
+      "streaming",
+      "user-modify-playback-state",
+      "user-read-playback-state",
+      "user-top-read",
+      "user-read-email",
+      "user-read-private",
+    ],
   }
   const { token, getToken, logout, scopes } = useSpotifyAuth(options)
 
