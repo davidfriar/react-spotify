@@ -1,7 +1,10 @@
 {
-  "name": "react-spotify",
+  "name": "spotify-api-hooks",
   "version": "0.1.0",
   "description": "React hooks for the Spotify APIs",
+  "files": [
+    "dist"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/types/index.d.ts",
@@ -12,7 +15,8 @@
   },
   "keywords": [
     "react",
-    "spotify"
+    "spotify",
+    "hooks"
   ],
   "author": "David Friar",
   "license": "MIT",
