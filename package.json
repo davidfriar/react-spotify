@@ -2,6 +2,7 @@
   "name": "spotify-api-hooks",
   "version": "0.1.0",
   "description": "React hooks for the Spotify APIs",
+  "homepage":"http://davidfriar.github.io/spotify-api-hooks",
   "files": [
     "dist"
   ],
@@ -9,7 +10,9 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/types/index.d.ts",
   "scripts": {
+    "predeploy" : "npm run build-storybook",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006"
   },
@@ -42,6 +45,7 @@
     "@types/spotify-web-playback-sdk": "^0.1.12",
     "babel-loader": "^8.2.4",
     "core-js": "^3.22.0",
+    "gh-pages": "^3.2.3",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "react": "^17.0.2",
