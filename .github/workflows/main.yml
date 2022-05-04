@@ -34,5 +34,7 @@ jobs:
          npm run deploy-storybook -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REACT_APP_SPOTIFY_CLIENT_ID: ${{secrets.REACT_APP_SPOTIFY_CLIENT_ID}}
+          REACT_APP_SPOTIFY_REDIRECT_URL: ${{secrets.REACT_APP_SPOTIFY_REDIRECT_URL}}
 
 
