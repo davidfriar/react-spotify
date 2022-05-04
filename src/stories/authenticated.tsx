@@ -17,7 +17,6 @@ export const Authenticated = (Story: Story<{ token: string }>) => {
   const { token, getToken } = useSpotifyAuth(options)
   return (
     <div>
-      key:{process.env.STORYBOOK_DATA_KEY}
       {token ? (
         <Story token={token} />
       ) : (
