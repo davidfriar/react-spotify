@@ -10,8 +10,8 @@ export default {
 
 const Template: Story = () => {
   const options: SpotifyAuthOptions = {
-    redirectURI: process.env.REACT_APP_SPOTIFY_REDIRECT_URL!,
-    clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID!,
+    redirectURI: process.env.STORYBOOK_SPOTIFY_REDIRECT_URL!,
+    clientId: process.env.STORYBOOK_SPOTIFY_CLIENT_ID!,
     scopes: ["streaming"],
   }
 
