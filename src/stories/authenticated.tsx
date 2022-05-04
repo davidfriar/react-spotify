@@ -3,8 +3,8 @@ import { useSpotifyAuth, SpotifyAuthOptions } from ".."
 
 export const Authenticated = (Story: Story<{ token: string }>) => {
   const options: SpotifyAuthOptions = {
-    redirectURI: process.env.REACT_APP_SPOTIFY_REDIRECT_URL!,
-    clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID!,
+    redirectURI: process.env.STORYBOOK_SPOTIFY_REDIRECT_URL!,
+    clientId: process.env.STORYBOOK_SPOTIFY_CLIENT_ID!,
     scopes: [
       "streaming",
       "user-modify-playback-state",
@@ -17,6 +17,7 @@ export const Authenticated = (Story: Story<{ token: string }>) => {
   const { token, getToken } = useSpotifyAuth(options)
   return (
     <div>
+      key:{process.env.STORYBOOK_DATA_KEY}
       {token ? (
         <Story token={token} />
       ) : (
