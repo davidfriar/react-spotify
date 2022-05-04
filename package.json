@@ -10,7 +10,6 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/types/index.d.ts",
   "scripts": {
-    "predeploy" : "npm run build-storybook",
     "build-storybook": "build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static",
     "build": "rollup -c",
