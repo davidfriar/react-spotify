@@ -28,6 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
+         echo STORYBOOK_SPOTIFY_REDIRECT_URL
          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
          npm install
          npm run build-storybook
