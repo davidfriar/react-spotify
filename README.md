@@ -5,4 +5,4 @@ Provides a set of React hooks that make it easy to interact with the [Spotify We
 
 Not yet quite ready for production use.
 
-Demo and documentation is here: (https://davidfriar.github.io/spotify-api-hooks)
+Demo and docs here: [Storybook](https://davidfriar.github.io/spotify-api-hooks)
