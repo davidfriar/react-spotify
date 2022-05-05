@@ -2,7 +2,7 @@
   "name": "spotify-api-hooks",
   "version": "0.1.0",
   "description": "React hooks for the Spotify APIs",
-  "homepage":"http://davidfriar.github.io/spotify-api-hooks",
+  "homepage":"https://davidfriar.github.io/spotify-api-hooks",
   "files": [
     "dist"
   ],
